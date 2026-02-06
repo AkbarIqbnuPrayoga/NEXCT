@@ -38,10 +38,4 @@ Website ini juga menampilkan **sertifikat pelatihan dan pencapaian** sebagai buk
 
 ---
 
-## 📂 Struktur Project
-
-├── index.html
-├── img/
-│ └── assets gambar & preview project
-└── sertifikat/
-│ └── file sertifikat
+© 2026 NEXCT B444R. Semua Hak Dilindungi. | Akbar Iqbnu Prayoga | Pencipta NEXCT B444R
