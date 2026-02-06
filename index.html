@@ -1698,6 +1698,121 @@
             background: var(--gradient-cyber);
         }
 
+        /* Dark Mode Variables & Styles */
+        body.dark-mode {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-blue: #60a5fa;
+            --tech-blue: #3b82f6;
+            --cyber-blue: #2563eb;
+            --light-blue: #1e3a8a;
+            --white: #0f172a;
+            --off-white: #1e293b;
+            --dark-gray: #f1f5f9;
+            --light-gray: #334155;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+            --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            --gradient-tech: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e40af 100%);
+            --gradient-cyber: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            --gradient-accent: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --shadow-menu: 0 20px 60px rgba(0, 0, 0, 0.5);
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark-mode header {
+            background-color: #1e293b;
+        }
+
+        body.dark-mode .dropdown-menu {
+            background: rgba(30, 41, 59, 0.95);
+        }
+
+        body.dark-mode .dropdown-menu::before {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+        }
+
+        body.dark-mode .dropdown-menu ul li a {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .dropdown-menu ul li:not(:last-child) {
+            border-bottom: 1px solid rgba(51, 65, 85, 0.6);
+        }
+
+        body.dark-mode .academic-hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)),
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        body.dark-mode .academic-hero h1 {
+            color: #e2e8f0;
+        }
+
+        body.dark-mode .academic-hero p {
+            color: #cbd5e1;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--tech-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            margin-left: 10px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: rotate(30deg);
+        }
+
+        /* CV Download Button */
+        .cv-download-btn {
+            margin-left: 20px;
+            background: var(--gradient-accent);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .cv-download-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Hero buttons container */
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .section-title {
@@ -1921,6 +2036,7 @@
             </div>
             
             <!-- Desktop Navigation -->
+            <!-- Di dalam <nav id="mainNav">, tambahkan tombol theme toggle dan CV download -->
             <nav id="mainNav">
                 <ul>
                     <li><a href="#beranda" class="nav-link active">Beranda</a></li>
@@ -1928,6 +2044,16 @@
                     <li><a href="#project" class="nav-link">Project</a></li>
                     <li><a href="#album" class="nav-link">Album</a></li>
                     <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                    <!-- <li>
+                        <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li> -->
+                    <!-- <li>
+                        <a href="cv.pdf" target="_blank" class="cv-download-btn">
+                            <i class="fas fa-download"></i> CV
+                        </a>
+                    </li> -->
                 </ul>
             </nav>
             
@@ -1941,6 +2067,7 @@
             </div>
             
             <!-- Dropdown Menu Aesthetic -->
+            <!-- Di dalam dropdown-menu, tambahkan item untuk theme toggle dan CV -->
             <div class="dropdown-menu" id="dropdownMenu">
                 <div class="menu-header">
                     <h3>NEXCT HUB</h3>
@@ -1952,6 +2079,16 @@
                     <li><a href="#project"><i class="fas fa-laptop"></i> Project</a></li>
                     <li><a href="#album"><i class="fas fa-images"></i> Album</a></li>
                     <li><a href="#kontak"><i class="fas fa-envelope"></i> Kontak</a></li>
+                    <!-- <li>
+                        <a href="#" id="themeToggleMobile">
+                            <i class="fas fa-moon"></i> Mode Gelap/Terang
+                        </a>
+                    </li> -->
+                    <!-- <li>
+                        <a href="cv.pdf" target="_blank">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -1963,8 +2100,12 @@
             <h1>Akbar Iqbnu Prayoga</h1>
             <p>Saya seorang Web Developer yang berfokus pada Front-End Development dan UI/UX Design</p>
             
+            <!-- Ganti tombol "Tentang Saya" di hero section -->
             <div class="hero-buttons">
-                <a href="#tentang" class="btn btn-primary">Tentang Saya</a>
+                <!-- <a href="#tentang" class="btn btn-primary">Tentang Saya</a> -->
+                <a href="https://drive.google.com/file/d/1rlC-Zw8GhJKgYsMGUWUdO-3gbv18KWku/view?usp=sharing" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
             </div>
             
             <div class="hero-stats">
@@ -2406,7 +2547,7 @@
                             <textarea id="message" class="form-control" placeholder="Tulis pesan atau pertanyaan Anda..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px;">Kirim Pendaftaran</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px;">Kirim Pesan</button>
                     </form>
                 </div>
             </div>
@@ -2457,6 +2598,93 @@
     </a>
 
     <script>
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeToggleMobile = document.getElementById('themeToggleMobile');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            updateThemeIcons('dark');
+        }
+
+        // Theme toggle function
+        function toggleTheme() {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            
+            // Update icons
+            updateThemeIcons(isDarkMode ? 'dark' : 'light');
+            
+            // Save preference
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        }
+
+        function updateThemeIcons(theme) {
+            const moonIcon = '<i class="fas fa-moon"></i>';
+            const sunIcon = '<i class="fas fa-sun"></i>';
+            
+            if (theme === 'dark') {
+                if (themeToggle) themeToggle.innerHTML = sunIcon;
+                if (themeToggleMobile) {
+                    themeToggleMobile.innerHTML = '<i class="fas fa-sun"></i> Mode Gelap/Terang';
+                }
+            } else {
+                if (themeToggle) themeToggle.innerHTML = moonIcon;
+                if (themeToggleMobile) {
+                    themeToggleMobile.innerHTML = '<i class="fas fa-moon"></i> Mode Gelap/Terang';
+                }
+            }
+        }
+
+        // Add event listeners
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+
+        if (themeToggleMobile) {
+            themeToggleMobile.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleTheme();
+            });
+        }
+
+        // Update form styling for dark mode
+        function updateFormStylesForDarkMode() {
+            if (body.classList.contains('dark-mode')) {
+                // Update form controls
+                const formControls = document.querySelectorAll('.form-control');
+                formControls.forEach(control => {
+                    control.style.backgroundColor = '#1e293b';
+                    control.style.color = '#e2e8f0';
+                    control.style.borderColor = '#475569';
+                });
+                
+                // Update contact info
+                const contactInfos = document.querySelectorAll('.contact-info, .contact-form');
+                contactInfos.forEach(info => {
+                    info.style.backgroundColor = '#1e293b';
+                });
+                
+                // Update cards
+                const cards = document.querySelectorAll('.facility-card, .member-card, .member-item, .album-item');
+                cards.forEach(card => {
+                    card.style.backgroundColor = '#1e293b';
+                });
+            }
+        }
+
+        // Call on theme change
+        const originalToggleTheme = toggleTheme;
+        window.toggleTheme = function() {
+            originalToggleTheme();
+            setTimeout(updateFormStylesForDarkMode, 10);
+        };
+
+        // Initialize form styles
+        updateFormStylesForDarkMode();
         // Create moving particles
         function createParticles() {
             const container = document.getElementById('particlesContainer');
