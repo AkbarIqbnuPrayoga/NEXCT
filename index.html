@@ -622,11 +622,11 @@
         </div>
     </section>
 
-    <!-- Contact Section - HUBUNGI KAMI -->
+    <!-- Contact Section dengan Firebase -->
     <section class="contact" id="kontak">
         <div class="container">
             <h2 class="section-title">Hubungi Kami</h2>
-            <p class="section-subtitle">Ingin belajar teknologi bersama Akbar Iqbnu Prayoga [NEXCT] ?</p>
+            <p class="section-subtitle">Ada pertanyaan atau ingin berkolaborasi? Kirim pesan melalui form di bawah!</p>
             
             <div class="contact-container fade-in">
                 <div class="contact-info">
@@ -694,7 +694,7 @@
                 
                 <div class="contact-form">
                     <h3>Kotak Pesan</h3>
-                    <p style="margin-bottom: 20px; color: var(--text-color); text-align: center;">Ingin bertanya berkaitan dengan system dan teknologi? silahkan isi pesan dibawah ini :</p>
+                    <p style="margin-bottom: 20px; color: var(--text-color); text-align: center;">Ingin bertanya berkaitan dengan system dan teknologi? Silahkan isi pesan di bawah ini:</p>
 
                     <div id="alertBox" class="alert-box" style="display: none;">
                         <p id="alertMessage"></p>
@@ -716,7 +716,10 @@
                             <textarea id="message" class="form-control" placeholder="Tulis pesan atau pertanyaan Anda..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px;">Kirim Pesan</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px;" id="submitBtn">
+                            <span id="btnText">Kirim Pesan</span>
+                            <span id="btnSpinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Mengirim...</span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -769,6 +772,11 @@
     <!-- Main JavaScript -->
     <script src="js/main.js"></script>
     <script src="js/protection.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <!-- firebase-config.js -->
+    <script src="js/firebase-config.js"></script>
     
     <script>
     // Hapus loader setelah konten dimuat

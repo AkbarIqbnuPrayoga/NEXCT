@@ -11,7 +11,6 @@ function setRandomTheme() {
     const currentTheme = body.getAttribute('data-theme');
     let newTheme;
     
-    // Pastikan tidak mendapatkan tema yang sama
     do {
         const randomIndex = Math.floor(Math.random() * themes.length);
         newTheme = themes[randomIndex];
@@ -34,13 +33,12 @@ if (mobileRandomBtn) {
         e.preventDefault();
         setRandomTheme();
         
-        // Close dropdown after selecting
         navToggle.classList.remove('active');
         dropdownMenu.classList.remove('active');
     });
 }
 
-// Typing Effect - DIPERBAIKI
+// Typing Effect
 const texts = [
     "FrontEnd Developer",
     "Computer Science",
@@ -60,53 +58,44 @@ function typeWriter() {
     const currentText = texts[textIndex];
     
     if (isDeleting) {
-        // Menghapus karakter
         typingElement.textContent = currentText.substring(0, charIndex - 1);
         charIndex--;
     } else {
-        // Mengetik karakter
         typingElement.textContent = currentText.substring(0, charIndex + 1);
         charIndex++;
     }
 
     let typeSpeed = isDeleting ? 50 : 100;
 
-    // Jika selesai mengetik
     if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; // Jeda 2 detik
+        typeSpeed = 2000;
         isDeleting = true;
-    } 
-    // Jika selesai menghapus
-    else if (isDeleting && charIndex === 0) {
+    } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         textIndex = (textIndex + 1) % texts.length;
-        typeSpeed = 100; // Jeda 0.1 detik sebelum mengetik kata baru
+        typeSpeed = 100;
     }
 
     setTimeout(typeWriter, typeSpeed);
 }
-
 
 // Create moving particles
 function createParticles() {
     const container = document.getElementById('particlesContainer');
     if (!container) return;
     
-    const particleCount = 50;
+    const particleCount = 30;
     
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         
-        // Random size
         const size = Math.random() * 10 + 5;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
         
-        // Random position
         particle.style.left = `${Math.random() * 100}vw`;
         
-        // Random animation
         const duration = 10 + Math.random() * 10;
         const delay = Math.random() * 5;
         particle.style.animationDuration = `${duration}s`;
@@ -130,7 +119,6 @@ if (navToggle) {
     });
 }
 
-// Close mobile dropdown when clicking a link
 dropdownLinks.forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
@@ -138,7 +126,6 @@ dropdownLinks.forEach(link => {
     });
 });
 
-// Close dropdowns when clicking outside
 document.addEventListener('click', (e) => {
     if (navToggle && dropdownMenu) {
         if (!navToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
@@ -148,7 +135,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Smooth scrolling for navigation links
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]:not(#mobileThemeRandom)').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -166,14 +153,11 @@ document.querySelectorAll('a[href^="#"]:not(#mobileThemeRandom)').forEach(anchor
     });
 });
 
-// Scroll Spy - Active nav link berdasarkan scroll position (HANYA UNTUK DESKTOP)
+// Scroll Spy - Only for desktop
 function updateActiveNavLink() {
-    // Hanya jalankan di desktop
     if (window.innerWidth <= 992) return;
     
-    const scrollPosition = window.scrollY + 100; // Offset untuk header
-
-    // Dapatkan semua section
+    const scrollPosition = window.scrollY + 100;
     const sections = document.querySelectorAll('section[id]');
     
     sections.forEach(section => {
@@ -182,10 +166,7 @@ function updateActiveNavLink() {
         const sectionId = section.getAttribute('id');
         
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            // Hapus active dari semua link
             navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Tambahkan active ke link yang sesuai
             document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
         }
     });
@@ -200,10 +181,8 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
     }
     
-    // Update active nav link (hanya untuk desktop)
     updateActiveNavLink();
     
-    // Back to top button
     const backToTop = document.getElementById('backToTop');
     if (window.scrollY > 300) {
         backToTop.classList.add('active');
@@ -212,33 +191,91 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Form submission
+// Firebase Form Submission
 const messageForm = document.getElementById('messageForm');
 const alertBox = document.getElementById('alertBox');
 const alertMessage = document.getElementById('alertMessage');
+const submitBtn = document.getElementById('submitBtn');
+const btnText = document.getElementById('btnText');
+const btnSpinner = document.getElementById('btnSpinner');
 
 if (messageForm) {
-    messageForm.addEventListener('submit', (e) => {
+    messageForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
 
-        alertBox.style.display = 'block';
+        // Validasi form
+        if (!name || !email || !message) {
+            showAlert('Harap lengkapi semua field!', 'error');
+            return;
+        }
 
-        if (name && email && message) {
-            alertBox.className = 'alert-box alert-success';
-            alertMessage.innerText =
-                `Terima kasih ${name}! Pertanyaan anda berhasil dikirim. Kami akan menghubungi Anda melalui email ${email} dalam 1-2 hari kerja.`;
+        // Validasi email sederhana
+        if (!email.includes('@') || !email.includes('.')) {
+            showAlert('Masukkan email yang valid!', 'error');
+            return;
+        }
 
+        // Tampilkan loading
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnSpinner.style.display = 'inline';
+
+        try {
+            // Simpan ke Firebase
+            await db.collection('messages').add({
+                name: name,
+                email: email,
+                message: message,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                read: false,
+                replied: false
+            });
+
+            // Tampilkan pesan sukses
+            showAlert(`Terima kasih ${name}! Pesan Anda berhasil dikirim.`, 'success');
+            
+            // Reset form
             messageForm.reset();
-        } else {
-            alertBox.className = 'alert-box alert-error';
-            alertMessage.innerText =
-                'Harap lengkapi semua field sebelum mengirim formulir.';
+            
+        } catch (error) {
+            console.error('Error sending message:', error);
+            showAlert('Maaf, terjadi kesalahan. Silakan coba lagi nanti.', 'error');
+        } finally {
+            // Sembunyikan loading
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline';
+            btnSpinner.style.display = 'none';
         }
     });
+}
+
+// Fungsi untuk menampilkan alert dengan warna di JS
+function showAlert(message, type) {
+    alertBox.style.display = 'block';
+    alertBox.className = `alert-box`; // Hapus class alert-success/error
+    alertMessage.innerText = message;
+    
+    // Set style langsung di JavaScript
+    if (type === 'success') {
+        alertBox.style.background = 'linear-gradient(135deg, #0a2463, #1e3a8a, #3b82f6)';
+        alertBox.style.color = 'white';
+        alertBox.style.border = 'none';
+        alertBox.style.boxShadow = '0 5px 15px rgba(10, 36, 99, 0.3)';
+    } else {
+        alertBox.style.background = 'linear-gradient(135deg, #dc2626, #b91c1c, #991b1b)';
+        alertBox.style.color = 'white';
+        alertBox.style.border = 'none';
+        alertBox.style.boxShadow = '0 5px 15px rgba(220, 38, 38, 0.3)';
+    }
+    
+    // Auto hide setelah 5 detik
+    setTimeout(() => {
+        alertBox.style.display = 'none';
+    }, 5000);
 }
 
 // Album tabs functionality
@@ -274,32 +311,27 @@ const checkScroll = () => {
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('load', checkScroll);
 
-// Handle window resize - update scroll spy behavior
+// Handle window resize
 window.addEventListener('resize', () => {
-    // Reset active states when switching to mobile
     if (window.innerWidth <= 992) {
         navLinks.forEach(link => link.classList.remove('active'));
     } else {
-        // Re-check active state when switching to desktop
         updateActiveNavLink();
     }
     checkScroll();
 });
 
-// Initialize on page load
+// Initialize
 window.addEventListener('DOMContentLoaded', function() {
     createParticles();
     checkScroll();
     
-    // Set initial active nav link untuk desktop
     if (window.innerWidth > 992) {
         updateActiveNavLink();
     }
     
-    // Mulai typing effect setelah 1 detik
     setTimeout(typeWriter, 1000);
     
-    // Animate logo
     const logoIcon = document.querySelector('.logo-icon');
     if (logoIcon) {
         setInterval(() => {
@@ -310,7 +342,6 @@ window.addEventListener('DOMContentLoaded', function() {
         }, 10000);
     }
     
-    // Set initial active nav link berdasarkan hash URL (hanya untuk desktop)
     if (window.innerWidth > 992) {
         const currentSection = window.location.hash || '#beranda';
         navLinks.forEach(link => {
