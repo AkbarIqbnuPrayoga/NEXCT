@@ -21,6 +21,9 @@
     
     <!-- Anti Copy & View Source -->
     <script src="js/protection.js"></script>
+    
+    <!-- Translation Data -->
+    <script src="js/translations.js"></script>
 </head>
 <body data-theme="theme1">
     <!-- LOADER -->
@@ -62,11 +65,21 @@
             <!-- Desktop Navigation -->
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#beranda" class="nav-link">Beranda</a></li>
-                    <li><a href="#tentang" class="nav-link">Tech Stack</a></li>
-                    <li><a href="#project" class="nav-link">Project</a></li>
-                    <li><a href="#album" class="nav-link">Album</a></li>
-                    <li><a href="#kontak" class="nav-link">Kontak</a></li>
+                    <li><a href="#beranda" class="nav-link" data-i18n="nav.home">Beranda</a></li>
+                    <li><a href="#tentang" class="nav-link" data-i18n="nav.techstack">Tech Stack</a></li>
+                    <li><a href="#project" class="nav-link" data-i18n="nav.projects">Project</a></li>
+                    <li><a href="#album" class="nav-link" data-i18n="nav.album">Album</a></li>
+                    <li><a href="#kontak" class="nav-link" data-i18n="nav.contact">Kontak</a></li>
+                    
+                    <!-- Language Toggle Button untuk Desktop -->
+                    <li class="desktop-language-toggle">
+                        <button class="language-toggle-btn" id="desktopLanguageToggle" title="Ganti Bahasa">
+                            <span class="lang-id">ID</span>
+                            <span class="lang-separator">|</span>
+                            <span class="lang-en">EN</span>
+                            <div class="lang-indicator" id="langIndicator"></div>
+                        </button>
+                    </li>
                     
                     <!-- Random Theme Button untuk Desktop -->
                     <li class="desktop-theme-toggle">
@@ -93,14 +106,22 @@
                     <p>Menu Navigasi</p>
                 </div>
                 <ul>
-                    <li><a href="#beranda"><i class="fas fa-home"></i> Beranda</a></li>
-                    <li><a href="#tentang"><i class="fas fa-info-circle"></i> Tech Stack</a></li>
-                    <li><a href="#project"><i class="fas fa-laptop"></i> Project</a></li>
-                    <li><a href="#album"><i class="fas fa-images"></i> Album</a></li>
-                    <li><a href="#kontak"><i class="fas fa-envelope"></i> Kontak</a></li>
+                    <li><a href="#beranda"><i class="fas fa-home"></i> <span data-i18n="nav.home">Beranda</span></a></li>
+                    <li><a href="#tentang"><i class="fas fa-info-circle"></i> <span data-i18n="nav.techstack">Tech Stack</span></a></li>
+                    <li><a href="#project"><i class="fas fa-laptop"></i> <span data-i18n="nav.projects">Project</span></a></li>
+                    <li><a href="#album"><i class="fas fa-images"></i> <span data-i18n="nav.album">Album</span></a></li>
+                    <li><a href="#kontak"><i class="fas fa-envelope"></i> <span data-i18n="nav.contact">Kontak</span></a></li>
+                    
+                    <!-- Language Toggle untuk Mobile -->
+                    <li class="theme-divider"></li>
+                    <li>
+                        <a href="#" class="language-toggle-mobile" id="mobileLanguageToggle">
+                            <i class="fas fa-language"></i> 
+                            <span id="mobileLangText">English</span>
+                        </a>
+                    </li>
                     
                     <!-- Random Theme Button untuk Mobile -->
-                    <li class="theme-divider"></li>
                     <li>
                         <a href="#" class="theme-random-mobile" id="mobileThemeRandom">
                             <i class="fas fa-random"></i> Ganti Tema
@@ -132,31 +153,30 @@
                     <div class="hero-tagline">
                         <span class="static-text">I'm a</span>
                         <span class="dynamic-text" id="typing-text"></span>
-                        <!-- <span class="static-text">student</span> -->
                     </div>
-                    <p class="hero-description">Saya adalah mahasiswa Teknik Informatika di Universitas Tarumanagara yang memiliki minat besar dalam pengembangan perangkat lunak, khususnya pada Web Developer dan Data Analyst. Saya senang membangun website dan aplikasi yang berfokus pada fungsionalitas yang jelas, skalabilitas, serta memberikan dampak nyata bagi pengguna.</p>
+                    <p class="hero-description" data-i18n="hero.description">Saya adalah mahasiswa Teknik Informatika di Universitas Tarumanagara yang memiliki minat besar dalam pengembangan perangkat lunak, khususnya pada Web Developer dan Data Analyst. Saya senang membangun website dan aplikasi yang berfokus pada fungsionalitas yang jelas, skalabilitas, serta memberikan dampak nyata bagi pengguna.</p>
                     
                     <div class="hero-buttons">
                         <a href="src/cv.pdf" target="_blank" class="btn btn-primary">
-                            <i class="fas fa-download"></i> Download CV
+                            <i class="fas fa-download"></i> <span data-i18n="hero.downloadCV">Download CV</span>
                         </a>
                         <a href="#kontak" class="btn btn-outline">
-                            <i class="fas fa-envelope"></i> Hubungi Saya
+                            <i class="fas fa-envelope"></i> <span data-i18n="hero.contactMe">Hubungi Saya</span>
                         </a>
                     </div>
                     
                     <div class="hero-stats">
                         <div class="stat-item">
                             <div class="stat-number">12+</div>
-                            <div class="stat-label">Project Selesai</div>
+                            <div class="stat-label" data-i18n="hero.completedProjects">Project Selesai</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">1</div>
-                            <div class="stat-label">Penghargaan</div>
+                            <div class="stat-label" data-i18n="hero.awards">Penghargaan</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number">16</div>
-                            <div class="stat-label">Sertifikasi</div>
+                            <div class="stat-label" data-i18n="hero.certifications">Sertifikasi</div>
                         </div>
                     </div>
                 </div>
@@ -167,8 +187,8 @@
     <!-- Tech Stack Section - Menggantikan Tentang Saya -->
     <section class="tech-stack-section" id="tentang">
         <div class="container">
-            <h2 class="section-title">Tech Stack</h2>
-            <p class="section-subtitle">Teknologi yang saya kuasai dalam pengembangan web dan aplikasi</p>
+            <h2 class="section-title" data-i18n="techstack.title">Tech Stack</h2>
+            <p class="section-subtitle" data-i18n="techstack.subtitle">Teknologi yang saya kuasai dalam pengembangan web dan aplikasi</p>
             
             <div class="tech-stack-content fade-in">
                 
@@ -178,7 +198,7 @@
                         <div class="tech-category-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3>Frontend Development</h3>
+                        <h3 data-i18n="techstack.frontend">Frontend Development</h3>
                     </div>
                     <div class="tech-items-grid">
                         <div class="tech-item">
@@ -215,7 +235,7 @@
                             <div class="tech-icon">
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
-                            <span>Responsive Design</span>
+                            <span data-i18n="techstack.responsive">Responsive Design</span>
                         </div>
                     </div>
                 </div>
@@ -226,7 +246,7 @@
                         <div class="tech-category-icon">
                             <i class="fas fa-server"></i>
                         </div>
-                        <h3>Backend Development</h3>
+                        <h3 data-i18n="techstack.backend">Backend Development</h3>
                     </div>
                     <div class="tech-items-grid">
                         <div class="tech-item">
@@ -274,7 +294,7 @@
                         <div class="tech-category-icon">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <h3>Tools & Others</h3>
+                        <h3 data-i18n="techstack.tools">Tools & Others</h3>
                     </div>
                     <div class="tech-items-grid">
                         <div class="tech-item">
@@ -334,8 +354,8 @@
     <!-- Project Section - Project Pribadi -->
     <section class="academic-facilities" id="project">
         <div class="container">
-            <h2 class="section-title">Project NEXCT</h2>
-            <p class="section-subtitle">Beberapa project yang pernah saya buat </p>
+            <h2 class="section-title" data-i18n="projects.title">Project NEXCT</h2>
+            <p class="section-subtitle" data-i18n="projects.subtitle">Beberapa project yang pernah saya buat</p>
             
             <div class="facilities-container">
                 <div class="facility-card fade-in">
@@ -344,8 +364,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">Image2Prompt</h3>
-                        <p class="facility-desc">Sebuah website untuk membuat gambar menjadi sebuah teks prompt untuk digunakan kembali.</p>
-                        <a href="https://nexct-image2prompt.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.image2prompt">Sebuah website untuk membuat gambar menjadi sebuah teks prompt untuk digunakan kembali.</p>
+                        <a href="https://nexct-image2prompt.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
                 
@@ -355,8 +375,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-Music Hub</h3>
-                        <p class="facility-desc">Sebuah website untuk mendengarkan lagu dengan menggunakan interface yang mirip dengan spotify.</p>
-                        <a href="https://nexct-music.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.musichub">Sebuah website untuk mendengarkan lagu dengan menggunakan interface yang mirip dengan spotify.</p>
+                        <a href="https://nexct-music.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
                 
@@ -366,8 +386,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-ShortLink</h3>
-                        <p class="facility-desc">Sebuah website yang digunakan untuk mengubah link panjang menjadi link yang pendek untuk dibagikan.</p>
-                        <a href="https://nexct-shortlink.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.shortlink">Sebuah website yang digunakan untuk mengubah link panjang menjadi link yang pendek untuk dibagikan.</p>
+                        <a href="https://nexct-shortlink.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
                 
@@ -377,8 +397,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-SpotifyDL</h3>
-                        <p class="facility-desc">Sebuah Web downloader sederhana untuk mengunduh lagu Spotify dengan tampilan modern dan mudah digunakan.</p>
-                        <a href="https://nexct-spotifydl.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.spotifydl">Sebuah Web downloader sederhana untuk mengunduh lagu Spotify dengan tampilan modern dan mudah digunakan.</p>
+                        <a href="https://nexct-spotifydl.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
                 
@@ -388,8 +408,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-DramaBox</h3>
-                        <p class="facility-desc">Sebuah Web streaming drama sederhana untuk menonton berbagai video drama secara online dengan tampilan modern dan responsif.</p>
-                        <a href="https://nexct-dramabox.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.dramabox">Sebuah Web streaming drama sederhana untuk menonton berbagai video drama secara online dengan tampilan modern dan responsif.</p>
+                        <a href="https://nexct-dramabox.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
 
@@ -399,8 +419,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-TiktokDL</h3>
-                        <p class="facility-desc">Sebuah Web downloader sederhana untuk mengunduh audio, video, dan foto dari link TikTok</p>
-                        <a href="https://nexct-tiktokdl.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.tiktokdl">Sebuah Web downloader sederhana untuk mengunduh audio, video, dan foto dari link TikTok</p>
+                        <a href="https://nexct-tiktokdl.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
 
@@ -410,8 +430,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCTNime</h3>
-                        <p class="facility-desc">Sebuah Web streaming anime dengan pilihan berbagai resolusi dan server untuk pengalaman menonton yang fleksibel dan responsif.</p>
-                        <a href="https://nexctnime.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.anime">Sebuah Web streaming anime dengan pilihan berbagai resolusi dan server untuk pengalaman menonton yang fleksibel dan responsif.</p>
+                        <a href="https://nexctnime.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
 
@@ -421,8 +441,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-Lyrics</h3>
-                        <p class="facility-desc">Web aplikasi pencari dan penampil lirik lagu, dengan tampilan sederhana dan mudah digunakan.</p>
-                        <a href="https://nexct-lyrics.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.lyrics">Web aplikasi pencari dan penampil lirik lagu, dengan tampilan sederhana dan mudah digunakan.</p>
+                        <a href="https://nexct-lyrics.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
 
@@ -432,8 +452,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-Comments</h3>
-                        <p class="facility-desc">Sebuah Web forum sederhana dengan fitur komentar yang tersimpan di database secara real-time.</p>
-                        <a href="https://nexct-forum.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.comments">Sebuah Web forum sederhana dengan fitur komentar yang tersimpan di database secara real-time.</p>
+                        <a href="https://nexct-forum.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
 
@@ -443,8 +463,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-SSWeb</h3>
-                        <p class="facility-desc">Web Screenshot adalah tool berbasis web canggih untuk mengambil screenshot website secara real-time dengan kualitas tinggi.</p>
-                        <a href="https://nexct-captureweb.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.screenshot">Web Screenshot adalah tool berbasis web canggih untuk mengambil screenshot website secara real-time dengan kualitas tinggi.</p>
+                        <a href="https://nexct-captureweb.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
 
@@ -454,8 +474,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-YoutubeDL</h3>
-                        <p class="facility-desc">Sebuah Web untuk Download video dan musik dari YouTube dengan MUDAH dan CEPAT!</p>
-                        <a href="https://nexct-ytdl.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.youtubedl">Sebuah Web untuk Download video dan musik dari YouTube dengan MUDAH dan CEPAT!</p>
+                        <a href="https://nexct-ytdl.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
 
@@ -465,8 +485,8 @@
                     </div>
                     <div class="facility-content">
                         <h3 class="facility-title">NEXCT-Webclone</h3>
-                        <p class="facility-desc">Web aplikasi clone dashboard/landing page yang dibuat sebagai latihan pengembangan frontend.</p>
-                        <a href="https://nexctwebclone.vercel.app/" class="btn btn-primary">Lihat Detail</a>
+                        <p class="facility-desc" data-i18n="projects.webclone">Web aplikasi clone dashboard/landing page yang dibuat sebagai latihan pengembangan frontend.</p>
+                        <a href="https://nexctwebclone.vercel.app/" class="btn btn-primary" data-i18n="projects.viewDetail">Lihat Detail</a>
                     </div>
                 </div>
             </div>
@@ -476,8 +496,8 @@
     <!-- Activities Album Section - ALBUM sertifikat -->
     <section class="activities-section" id="album">
         <div class="container">
-            <h2 class="section-title">Sertifikat Kegiatan</h2>
-            <p class="section-subtitle">Beberapa sertifikat dari Webinar dan Training</p>
+            <h2 class="section-title" data-i18n="album.title">Sertifikat Kegiatan</h2>
+            <p class="section-subtitle" data-i18n="album.subtitle">Beberapa sertifikat dari Webinar dan Training</p>
             
             <div class="album-tabs">
                 <button class="album-tab active" data-album="album1">Album 1</button>
@@ -489,64 +509,64 @@
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/1.png" alt="Sertifikat 1">
                         <div class="album-overlay">
-                            <h4>From Zero to Web3 Hero</h4>
-                            <p>Sertifikat partisipasi bootcamp Web3 intensif kolaborasi kampus dan industri.</p>
+                            <h4 data-i18n="album.cert1.title">From Zero to Web3 Hero</h4>
+                            <p data-i18n="album.cert1.desc">Sertifikat partisipasi bootcamp Web3 intensif kolaborasi kampus dan industri.</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/2.png" alt="Sertifikat 2">
                         <div class="album-overlay">
-                            <h4>Supply Chain Youth Network Certificate</h4>
-                            <p>Program pengembangan supply chain dalam dunia kerja</p>
+                            <h4 data-i18n="album.cert2.title">Supply Chain Youth Network Certificate</h4>
+                            <p data-i18n="album.cert2.desc">Program pengembangan supply chain dalam dunia kerja</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/3.png" alt="Sertifikat 3">
                         <div class="album-overlay">
-                            <h4>Certificate Red Hat Infrastructure Modernization</h4>
-                            <p>Webinar teknologi infrastruktur modern bersama Red Hat</p>
+                            <h4 data-i18n="album.cert3.title">Certificate Red Hat Infrastructure Modernization</h4>
+                            <p data-i18n="album.cert3.desc">Webinar teknologi infrastruktur modern bersama Red Hat</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/4.png" alt="Sertifikat 4">
                         <div class="album-overlay">
-                            <h4>Analisis Media Sosial dan AI</h4>
-                            <p>Partisipasi dalam analisis media sosial berbasis AI</p>
+                            <h4 data-i18n="album.cert4.title">Analisis Media Sosial dan AI</h4>
+                            <p data-i18n="album.cert4.desc">Partisipasi dalam analisis media sosial berbasis AI</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/5.png" alt="Sertifikat 5">
                         <div class="album-overlay">
-                            <h4>Development & Entrepreneurship Expo</h4>
-                            <p>Partisipasi expo kewirausahaan dan pengembangan startup</p>
+                            <h4 data-i18n="album.cert5.title">Development & Entrepreneurship Expo</h4>
+                            <p data-i18n="album.cert5.desc">Partisipasi expo kewirausahaan dan pengembangan startup</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/6.png" alt="Sertifikat 6">
                         <div class="album-overlay">
-                            <h4>Red Hat System Administration I</h4>
-                            <p>Kelulusan pelatihan administrasi sistem Linux resmi Red Hat</p>
+                            <h4 data-i18n="album.cert6.title">Red Hat System Administration I</h4>
+                            <p data-i18n="album.cert6.desc">Kelulusan pelatihan administrasi sistem Linux resmi Red Hat</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/7.png" alt="Sertifikat 7">
                         <div class="album-overlay">
-                            <h4>AMD Classroom Talkshow</h4>
-                            <p>Talkshow teknologi AMD di lingkungan akademik</p>
+                            <h4 data-i18n="album.cert7.title">AMD Classroom Talkshow</h4>
+                            <p data-i18n="album.cert7.desc">Talkshow teknologi AMD di lingkungan akademik</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/8.png" alt="Sertifikat 8">
                         <div class="album-overlay">
-                            <h4>Webinar Cybersecurity </h4>
-                            <p>Sertifikat kehadiran webinar keamanan siber</p>
+                            <h4 data-i18n="album.cert8.title">Webinar Cybersecurity</h4>
+                            <p data-i18n="album.cert8.desc">Sertifikat kehadiran webinar keamanan siber</p>
                         </div>
                     </div>
                 </div>
@@ -557,64 +577,64 @@
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/9.png" alt="Sertifikat 9">
                         <div class="album-overlay">
-                            <h4>Festival Humaniora UNTAR</h4>
-                            <p>Sertifikat partisipasi kegiatan festival humaniora tingkat universitas</p>
+                            <h4 data-i18n="album.cert9.title">Festival Humaniora UNTAR</h4>
+                            <p data-i18n="album.cert9.desc">Sertifikat partisipasi kegiatan festival humaniora tingkat universitas</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/10.png" alt="Sertifikat 10">
                         <div class="album-overlay">
-                            <h4>AI and Robotics</h4>
-                            <p>Sertifikat peserta kuliah umum inovasi kecerdasan buatan dan robotika.</p>
+                            <h4 data-i18n="album.cert10.title">AI and Robotics</h4>
+                            <p data-i18n="album.cert10.desc">Sertifikat peserta kuliah umum inovasi kecerdasan buatan dan robotika.</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/11.png" alt="Sertifikat 11">
                         <div class="album-overlay">
-                            <h4>Sertifikat Penghargaan Srikandi BUMN</h4>
-                            <p>Apresiasi partisipasi mahasiswa dalam program Srikandi BUMN Goes Campus</p>
+                            <h4 data-i18n="album.cert11.title">Sertifikat Penghargaan Srikandi BUMN</h4>
+                            <p data-i18n="album.cert11.desc">Apresiasi partisipasi mahasiswa dalam program Srikandi BUMN Goes Campus</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/12.png" alt="Sertifikat 12">
                         <div class="album-overlay">
-                            <h4>Webinar Pemulihan Perempuan</h4>
-                            <p>Webinar pemulihan perempuan terkait kekerasan trauma dan penguatan diri</p>
+                            <h4 data-i18n="album.cert12.title">Webinar Pemulihan Perempuan</h4>
+                            <p data-i18n="album.cert12.desc">Webinar pemulihan perempuan terkait kekerasan trauma dan penguatan diri</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/13.png" alt="Sertifikat 13">
                         <div class="album-overlay">
-                            <h4>Certificate of Appreciation IEEE ComSoc</h4>
-                            <p>Apresiasi kontribusi peserta dalam diskusi Women Talks on Communications</p>
+                            <h4 data-i18n="album.cert13.title">Certificate of Appreciation IEEE ComSoc</h4>
+                            <p data-i18n="album.cert13.desc">Apresiasi kontribusi peserta dalam diskusi Women Talks on Communications</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/14.png" alt="Sertifikat 14">
                         <div class="album-overlay">
-                            <h4>Webinar Psikologi Perkembangan</h4>
-                            <p>Webinar psikologi perkembangan dewasa membahas relasi dan kesehatan emosional</p>
+                            <h4 data-i18n="album.cert14.title">Webinar Psikologi Perkembangan</h4>
+                            <p data-i18n="album.cert14.desc">Webinar psikologi perkembangan dewasa membahas relasi dan kesehatan emosional</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/15.png" alt="Sertifikat 15">
                         <div class="album-overlay">
-                            <h4>Forum Komunikasi Mahasiswa</h4>
-                            <p>Keikutsertaan aktif mahasiswa dalam forum komunikasi dan aspirasi kampus</p>
+                            <h4 data-i18n="album.cert15.title">Forum Komunikasi Mahasiswa</h4>
+                            <p data-i18n="album.cert15.desc">Keikutsertaan aktif mahasiswa dalam forum komunikasi dan aspirasi kampus</p>
                         </div>
                     </div>
                     
                     <div class="album-item fade-in">
                         <img src="src/sertifikat/16.png" alt="Sertifikat 16">
                         <div class="album-overlay">
-                            <h4>Forum Aspirasi Mahasiswa</h4>
-                            <p>Partisipasi mahasiswa membangun perubahan melalui komunikasi dan kolaborasi bersama</p>
+                            <h4 data-i18n="album.cert16.title">Forum Aspirasi Mahasiswa</h4>
+                            <p data-i18n="album.cert16.desc">Partisipasi mahasiswa membangun perubahan melalui komunikasi dan kolaborasi bersama</p>
                         </div>
                     </div>
                 </div>
@@ -625,20 +645,20 @@
     <!-- Contact Section dengan Firebase -->
     <section class="contact" id="kontak">
         <div class="container">
-            <h2 class="section-title">Hubungi Kami</h2>
-            <p class="section-subtitle">Ada pertanyaan atau ingin berkolaborasi? Kirim pesan melalui form di bawah!</p>
+            <h2 class="section-title" data-i18n="contact.title">Hubungi Kami</h2>
+            <p class="section-subtitle" data-i18n="contact.subtitle">Ada pertanyaan atau ingin berkolaborasi? Kirim pesan melalui form di bawah!</p>
             
             <div class="contact-container fade-in">
                 <div class="contact-info">
-                    <h3>Informasi Kontak</h3>
+                    <h3 data-i18n="contact.infoTitle">Informasi Kontak</h3>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Lokasi</h4>
-                            <p>Jalan Cemerlang 1 No.86, RT.06/RW.02, Jatibening, Pondok Gede, KOTA BEKASI, JAWA BARAT, ID 17412</p>
+                            <h4 data-i18n="contact.location">Lokasi</h4>
+                            <p data-i18n="contact.address">Jalan Cemerlang 1 No.86, RT.06/RW.02, Jatibening, Pondok Gede, KOTA BEKASI, JAWA BARAT, ID 17412</p>
                         </div>
                     </div>
                     
@@ -648,7 +668,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>Email</h4>
-                            <p>akbariqbnup@gmail.com</p>
+                            <a href="mailto:akbariqbnup@gmail.com" target="_blank"><p>akbariqbnup@gmail.com</p></a>
                         </div>
                     </div>
                     
@@ -657,9 +677,9 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Telepon</h4>
-                            <p>0895-1010-9272</p>
-                            <p>0895-1010-9273</p>
+                            <h4 data-i18n="contact.phone">Telepon</h4>
+                            <a href="https://wa.me/089510109273" target="_blank"><p>0895-1010-9273</p></a>
+                            <a href="https://wa.me/089510109272" target="_blank"><p>0895-1010-9272</p></a>
                         </div>
                     </div>
                     
@@ -670,7 +690,7 @@
                         <div class="contact-details">
                             <h4>Instagram</h4>
                             <p><a href="https://instagram.com/akbariqbnu" target="_blank">@akbariqbnu</a></p>
-                            <p>Follow untuk update proyek teknologi</p>
+                            <p data-i18n="contact.instagramDesc">Follow untuk update proyek teknologi</p>
                         </div>
                     </div>
                     
@@ -679,22 +699,23 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="contact-details">
-                            <h4>Jam Kerja</h4>
-                            <p>Senin - Jumat: 09.00 - 16.00 WIB<br>Sabtu: 10.00 - 15.00 WIB</p>
+                            <h4 data-i18n="contact.workingHours">Jam Kerja</h4>
+                            <p data-i18n="contact.workingHoursDesc">Senin - Jumat: 09.00 - 16.00 WIB<br>Sabtu: 10.00 - 15.00 WIB</p>
                         </div>
                     </div>
                     
                     <div class="social-links">
                         <a href="https://instagram.com/akbariqbnu" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/akbar.iqbnu1" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/akbariqbnu/" target="_blank" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Kotak Pesan</h3>
-                    <p style="margin-bottom: 20px; color: var(--text-color); text-align: center;">Ingin bertanya berkaitan dengan system dan teknologi? Silahkan isi pesan di bawah ini:</p>
+                    <h3 data-i18n="contact.formTitle">Kotak Pesan</h3>
+                    <p style="margin-bottom: 20px; color: var(--text-color); text-align: center;" data-i18n="contact.formDesc">Ingin bertanya berkaitan dengan system dan teknologi? Silahkan isi pesan di bawah ini:</p>
 
                     <div id="alertBox" class="alert-box" style="display: none;">
                         <p id="alertMessage"></p>
@@ -702,22 +723,22 @@
 
                     <form id="messageForm">
                         <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
+                            <label for="name" data-i18n="contact.nameLabel">Nama Lengkap</label>
                             <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-i18n="contact.emailLabel">Email</label>
                             <input type="email" id="email" class="form-control" placeholder="Masukkan email aktif" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Pesan / Pertanyaan</label>
+                            <label for="message" data-i18n="contact.messageLabel">Pesan / Pertanyaan</label>
                             <textarea id="message" class="form-control" placeholder="Tulis pesan atau pertanyaan Anda..." required></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px;" id="submitBtn">
-                            <span id="btnText">Kirim Pesan</span>
+                            <span id="btnText" data-i18n="contact.sendButton">Kirim Pesan</span>
                             <span id="btnSpinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Mengirim...</span>
                         </button>
                     </form>
@@ -739,19 +760,19 @@
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Navigasi Cepat</h4>
+                    <h4 data-i18n="footer.quickNav">Navigasi Cepat</h4>
                     <ul>
-                        <li><a href="#beranda">Beranda</a></li>
-                        <li><a href="#tentang">Tech Stack</a></li>
-                        <li><a href="#project">Project</a></li>
-                        <li><a href="#album">Album</a></li>
-                        <li><a href="#kontak">Kontak</a></li>
+                        <li><a href="#beranda" data-i18n="nav.home">Beranda</a></li>
+                        <li><a href="#tentang" data-i18n="nav.techstack">Tech Stack</a></li>
+                        <li><a href="#project" data-i18n="nav.projects">Project</a></li>
+                        <li><a href="#album" data-i18n="nav.album">Album</a></li>
+                        <li><a href="#kontak" data-i18n="nav.contact">Kontak</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-contact">
-                    <h4>Kontak Kami</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> Jalan Cemerlang 1 No.86, RT.06/RW.02</p>
+                    <h4 data-i18n="footer.contactUs">Kontak Kami</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span data-i18n="contact.address">Jalan Cemerlang 1 No.86, RT.06/RW.02</span></p>
                     <p><i class="fas fa-envelope"></i> akbariqbnup@gmail.com</p>
                     <p><i class="fab fa-instagram"></i> @akbariqbnu</p>
                     <p><i class="fas fa-phone"></i> 0895-1010-9273</p>
@@ -759,7 +780,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2026 NEXCT B444R. Semua Hak Dilindungi. | Akbar Iqbnu Prayoga | Pencipta NEXCT B444R</p>
+                <p>&copy; 2026 NEXCT B444R. <span data-i18n="footer.rights">Semua Hak Dilindungi.</span> | Akbar Iqbnu Prayoga | <span data-i18n="footer.creator">Pencipta NEXCT B444R</span></p>
             </div>
         </div>
     </footer>
@@ -777,6 +798,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <!-- firebase-config.js -->
     <script src="js/firebase-config.js"></script>
+    <!-- Language Handler -->
+    <script src="js/language.js"></script>
     
     <script>
     // Hapus loader setelah konten dimuat

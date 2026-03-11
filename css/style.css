@@ -733,6 +733,125 @@ nav ul li a.active::after {
     position: relative;
 }
 
+/* Desktop Language Toggle */
+.desktop-language-toggle {
+    position: relative;
+    margin-right: 5px;
+}
+
+.language-toggle-btn {
+    width: 80px;
+    height: 40px;
+    border-radius: 40px;
+    border: 2px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.language-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
+}
+
+.lang-id, .lang-en {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+    width: 25px;
+    text-align: center;
+}
+
+.lang-separator {
+    color: var(--border-color);
+    font-weight: 300;
+    z-index: 2;
+    font-size: 12px;
+}
+
+.lang-indicator {
+    position: absolute;
+    width: 36px;
+    height: 30px;
+    border-radius: 30px;
+    background: var(--gradient-1);
+    left: 4px;
+    top: 3px;
+    transition: left 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+}
+
+/* Posisi indicator untuk bahasa Indonesia */
+.language-toggle-btn[data-lang="id"] .lang-indicator {
+    left: 4px;
+}
+
+.language-toggle-btn[data-lang="id"] .lang-id {
+    color: white;
+    font-weight: 700;
+}
+
+.language-toggle-btn[data-lang="id"] .lang-en {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Posisi indicator untuk bahasa Inggris */
+.language-toggle-btn[data-lang="en"] .lang-indicator {
+    left: 40px;
+}
+
+.language-toggle-btn[data-lang="en"] .lang-en {
+    color: white;
+    font-weight: 700;
+}
+
+.language-toggle-btn[data-lang="en"] .lang-id {
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Efek hover */
+.language-toggle-btn:hover .lang-indicator {
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* Support untuk semua tema */
+[data-theme="theme2"] .language-toggle-btn .lang-indicator {
+    background: var(--gradient-1);
+}
+
+[data-theme="theme3"] .language-toggle-btn .lang-indicator {
+    background: var(--gradient-1);
+}
+
+[data-theme="theme4"] .language-toggle-btn .lang-indicator {
+    background: var(--gradient-1);
+}
+
+[data-theme="theme5"] .language-toggle-btn .lang-indicator {
+    background: var(--gradient-1);
+}
+
+/* Responsive untuk tablet */
+@media (max-width: 992px) {
+    .desktop-language-toggle {
+        display: none;
+    }
+}
+
 .theme-random-btn {
     width: 45px;
     height: 45px;
@@ -1538,6 +1657,10 @@ footer {
 }
 
 .social-links a.facebook:hover {
+    background: #1877F2;
+    color: white;
+}
+.social-links a.linkedin:hover {
     background: #1877F2;
     color: white;
 }
